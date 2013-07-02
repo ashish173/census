@@ -1,0 +1,6 @@
+answer model 
+
+t.refernces :user_id
+t.refernces :survey_id
+t.refernces :option_id
+

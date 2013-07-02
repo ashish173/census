@@ -1,0 +1,15 @@
+%h1 Index page hai answers controller ka!!!
+%table
+  %thead
+    %tr
+      name  
+    %tbody
+      = @answers.each do |answer|
+        = Survey.find(answer.survey_id).name
+        %td
+          /- q_id = answer.option_id
+          /= Question.find(Option.where(question_id: q_id)).question_id
+          /Option.find(Option.last).question_id
+          %br
+          = Option.find(answer.option_id).desc
+          %br

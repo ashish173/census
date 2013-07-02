@@ -1,0 +1,63 @@
+%h1 Take Survey
+= form_for @survey, :url => answers_path, :method => :post  do |survey| 
+  Name :
+  = @survey.name
+  Year : 
+  = @survey.year
+  - @survey.questions.each do |question|
+    %br
+    Question :
+    = question.desc
+    - question.options.each do |option|
+      %br
+      Options
+      = radio_button :desc, @survey.id, option.id
+      = option.desc
+  = survey.submit :save
+= link_to "back to surveys", surveys_path
+
+/  /= survey.text_field :year
+/  /= survey.fields_for :questions do |question|
+/    /%br
+/    /Question : 
+/    /= question.text_field :desc
+/    /= question.fields_for :options do |option|
+/      /%br
+/      /Option :
+/      /=option.radio_button :desc, option.id, :desc, :question.id
+/      /= option.text_field :desc
+
+  
+   
+
+
+
+
+/ table structure 
+/%table
+/  %tbody
+/    %thead 
+/      %td
+/        = @survey.name  
+/      %td
+/       = @survey.year
+/    - @survey.questions.each do |question|    
+/      %tbody
+/        %tr
+/          = question.desci
+
+/  /= survey.text_field :name
+/  /= survey.label "Year"
+/  /= survey.text_field :year
+/  /%br
+/  /= survey.questions.each do |question|
+/    /%br
+/    /= question.label "Question "
+/    /= question.text_field :desc
+/    /= question.options.each :options do |option|
+/      /= option.radio_button :desc, option.id , :desc, question.id
+/      /= option.label :desc, :value => "desc"
+/      /= option.text_field :desc
+/  /=survey.submit :save
+
+

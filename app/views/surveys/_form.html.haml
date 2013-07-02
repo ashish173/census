@@ -1,0 +1,19 @@
+= nested_form_for @surveys do |f|
+  = f.label "Name"
+  = f.text_field :name
+  = f.label "Year"
+  = f.text_field :year
+  %br
+  = f.fields_for :questions do |question|
+    %br
+    = question.label "Question"
+    = question.text_field :desc
+    = question.link_to_remove "remove question"
+    = question.fields_for :options do |option|
+      = option.label "options"
+      = option.text_field :desc
+      = option.link_to_remove "remove option"
+    = question.link_to_add "add options", :options
+  = f.link_to_add "add question", :questions
+  %br
+  = f.submit :save

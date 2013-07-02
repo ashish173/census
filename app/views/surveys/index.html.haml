@@ -1,0 +1,17 @@
+%h1 List of surveys
+%table
+  %thead
+    %tr
+      Name
+    %tr
+      Year
+  - @surveys.each do |survey|    
+    %tbody
+      %td
+        =survey.name
+        =survey.year
+        =link_to "edit", edit_survey_path(survey.id)
+        =link_to "Take Survey", survey, method: :get
+        =link_to "remove", survey, method: :delete
+        /=link_to "Take Survey", survey_path(survey)
+=link_to "create survey", new_survey_path
